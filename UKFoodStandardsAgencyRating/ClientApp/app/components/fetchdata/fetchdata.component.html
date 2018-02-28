@@ -1,0 +1,29 @@
+<h1>FSA Rating Overview</h1>
+
+<p>Select Local Authority to find the rating Overview.</p>
+
+<p *ngIf="!localAuthorities"><em>Loading...</em></p>
+
+<select (change)="onSelect($event.target.value)">
+    <option *ngFor="let localAuthority of localAuthorities" value={{localAuthority.LocalAuthorityId}}>
+        {{localAuthority.Name}}
+    </option>
+</select>
+<br />
+
+<p *ngIf="!ratingOverview"><em>Loading...</em></p>
+
+<table class='table' *ngIf="ratingOverview">
+    <thead>
+        <tr>
+            <th>Rating (Star)</th>
+            <th>Percentage (%)</th>            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ratings of ratingOverview">
+            <td>{{ ratings.Rating }}</td>
+            <td>{{ ratings.Percentage }}</td>
+        </tr>
+    </tbody>
+</table>
